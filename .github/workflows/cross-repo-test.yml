@@ -18,6 +18,8 @@ jobs:
   
   cross-repo-test:
     uses: cschadewitz/workflow-testing/.github/workflows/cross_repo_test_ru.yml@gh-to-azure-oidc-reusable-workflow
+    permissions:
+      id-token: write
     secrets:
       az-client-id: ${{ secrets.AZURE_CLIENT_ID }}
       az-tenant-id: ${{ secrets.AZURE_TENANT_ID }}
