@@ -1,0 +1,24 @@
+name: TestCrossRepo
+
+on:
+  workflow_dispatch:
+    inputs:
+      test:
+        description: 'Test'
+        required: true
+        type: string
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print
+        run: echo "Hello, ${{ github.actor }}"
+  
+  cross-repo-test:
+    uses: cschadewitz/workflow-testing/.github/workflows/cross_repo_test_ru.yml@gh-to-azure-oidc-reusable-workflow
+    secrets:
+      client-id: ${{ secrets.az-client-id }}
+      tenant-id: ${{ secrets.az-tenant-id }}
+      subscription-id: ${{ secrets.az-subscription-id }}
